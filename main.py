@@ -1,3 +1,4 @@
+#For educational purposes only.
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
@@ -10,13 +11,16 @@ chromeOptions = webdriver.ChromeOptions()
 driver.set_window_size(1024, 600)
 driver.maximize_window()
 
-link = "http://m.qooh.me"           #link of person you want to spam
+print("Enter link: ")
+link = input()
+print("Enter msg: ")
+msg = input()
 i = 0
 driver.get(link)
 while(i < 100):
     time.sleep(1)
     text = driver.find_element_by_xpath("//*[@id='question']")
-    text.send_keys(f"This is a bot. Apologies in advance for the spam but this is too much fun. {i}")
+    text.send_keys(msg)
     driver.find_element_by_xpath("//*[@id='designed-textarea-send-btn']").click()
     time.sleep(1)
     driver.get(link)
